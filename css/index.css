@@ -281,11 +281,15 @@ img {
 }
 .home .content-section .img-content img {
   border-radius: 10px;
+  transition: 0.5s ease-in;
 }
 @media (max-width: 500px) {
   .home .content-section .img-content img {
     width: 100%;
   }
+}
+.home .content-section .img-content img:hover {
+  transform: rotate(350deg);
 }
 .home .inverse-content {
   padding-bottom: 30px;
