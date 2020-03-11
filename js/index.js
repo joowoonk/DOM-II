@@ -136,7 +136,70 @@ document.addEventListener("drop", function(event) {
   // move dragged elem to the selected drop target
   if (event.target.className == "dropping") {
     event.target.style.background = "";
-    dragged.parentNode.removeChild( dragged );
+    // dragged.parentNode.removeChild( dragged );
     event.target.appendChild( dragged );
   }
 }, false);
+
+
+window.addEventListener('load', (event) => {
+    console.log('page is fully loaded');
+  });
+
+const form = document.getElementById('form');
+
+form.addEventListener('focus', (event) => {
+  event.target.style.background = 'pink';    
+  setTimeout(function() {
+    event.target.style.color = "";
+  }, 500);
+},true);
+
+// const heightOutput = document.querySelector('#height');
+// const widthOutput = document.querySelector('#width');
+
+// function reportWindowSize() {
+//   heightOutput.textContent = window.innerHeight;
+//   widthOutput.textContent = window.innerWidth;
+// }
+
+// console.log(window.addEventListener('resize', reportWindowSize));
+function displayWindowSize(){
+    // Get width and height of the window excluding scrollbars
+    var w = document.documentElement.clientWidth;
+    var h = document.documentElement.clientHeight;
+    
+    // Display result inside a div element
+    document.querySelector(".container .intro .bus").innerHTML = "Width: " + w + ", " + "Height: " + h;
+}
+ 
+// Attaching the event listener function to window's resize event
+console.log(window.addEventListener("resize", displayWindowSize));
+
+
+
+    window.addEventListener('scroll', () => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+
+        if (Math.ceil(scrolled) === scrollable) {
+            alert(`You've reached the bottom`);
+        }
+    });
+
+function logSelection(event) {
+    const log = document.querySelector('.home .intro .log');
+    const selection = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd);
+        log.textContent = `You selected this country: ${selection}`;
+    }
+    
+    const input = document.querySelector('input');
+    input.addEventListener('select', logSelection);   
+
+
+const biggerBus = document.querySelector('.bus');
+
+biggerBus.addEventListener('dblclick', function (e) {
+    biggerBus.classList.toggle('large');
+});
+
